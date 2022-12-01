@@ -1,0 +1,22 @@
+{% extends "inventory/base.html" %}
+
+{% block content %}
+<h1>List of Ingredients Present in Inventory</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price (Rupees)</th>
+        <th>Quantity (Kg)</th>
+    </tr>
+    {% for ingredient in ingredient_list %}
+    <tr>
+        <th>{{ingredient.name}}</th>
+        <th>50</th>
+        <th>{{ingredient.quantity}}</th>
+        <th><a href="{% url 'ingredientupdate' ingredient.id %}">Update</a></th>
+        <th><a href="{% url 'ingredientdelete' ingredient.id %}">Delete</a></th>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'ingredientcreate' %}">Add Ingredient</a>
+{% endblock %}
